@@ -1,25 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function DataButton(props) {
+  function onclick(e) {
+    fetch('http://127.0.0.1:5000/data')
+    .then(resp => resp.json())
+    .then( json => {
+      console.log(json);
+    }
+    ).catch(e => console.log(e))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <button onClick={onclick}>Data</button>
+  )
 }
+
+function UploadButton(props) {
+
+  function onclick(e) {
+    fetch('http://127.0.0.1:5000/upload', {
+      method: 'POST',
+      body: JSON.stringify({a: 1})
+    })
+    .then(resp => resp.json())
+    .then( json => {
+      console.log(json);
+    }
+    ).catch(e => console.log(e))
+  }
+  return (
+    <button onClick={onclick}>Upload</button>
+  )
+}
+
+function App() {
+  const name = 'Zhifan';
+  return (<>
+    <p>{name}</p>
+    <DataButton />
+    <UploadButton />
+  </>)
+}
+
 
 export default App;
