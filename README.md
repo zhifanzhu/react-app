@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Starting flask
+
+FLASK_APP=server/server.py flask run --host 0.0.0.0 --port 5000
+
 ## Available Scripts
 
 In the project directory, you can run:

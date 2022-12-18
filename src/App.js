@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 
+const hostname = window.location.hostname;
+
 function DataButton(props) {
   function onclick(e) {
-    fetch('http://127.0.0.1:5000/data')
+    fetch(`http://${hostname}:5000/data`)
     .then(resp => resp.json())
     .then( json => {
       console.log(json);
@@ -18,7 +20,7 @@ function DataButton(props) {
 function UploadButton(props) {
 
   function onclick(e) {
-    fetch('http://127.0.0.1:5000/upload', {
+    fetch(`http://${hostname}:5000/upload`, {
       method: 'POST',
       body: JSON.stringify({a: 1})
     })
