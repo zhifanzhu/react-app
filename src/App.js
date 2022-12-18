@@ -19,10 +19,17 @@ function DataButton(props) {
 
 function UploadButton(props) {
 
+  const data = [
+    { vid: 'debug', start: 66 }
+  ];
+
   function onclick(e) {
     fetch(`http://${hostname}:5000/upload`, {
       method: 'POST',
-      body: JSON.stringify({a: 1})
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     })
     .then(resp => resp.json())
     .then( json => {

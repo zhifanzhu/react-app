@@ -9,12 +9,18 @@ app = Flask(__name__)
 @app.route("/data")
 @cross_origin()
 def data():
-    return jsonify("<p>Data!</p>")
+    data = [
+        {
+            'vid': 'P01',
+            'start': 2990
+        }
+    ]
+    return jsonify(data)
 
 @app.route("/upload", methods=['POST'])
 @cross_origin()
 def upload():
     if request.method == 'POST':
-        print(request)
-        return jsonify({})
-        # return do_the_login()
+        recv = request.json
+        print(recv)
+        return jsonify(recv)
